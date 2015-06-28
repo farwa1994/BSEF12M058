@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "index";
+}
+
+@section index
+{
+    @model List<EAD_Term_Project.Models.College>
+    <head>
+        <title>Home</title>
+    </head>
+}
+
+ <p class="h1" style="font-size:100px;margin-left:20% ; font-family:Batang ; text-align:center">Colleges</p> 
+
+       <table>
+           <tbody>
+                     
+        @try
+        {
+                int i = 1;
+            while(i<=Model.Count)
+            {
+            <tr>
+                @for (; i <= Model.Count; i++)
+                {              
+                    <td>
+                        <a href="/College/detail_view_of_college/@Model.ElementAt(i-1).Id"><img src="@Model.ElementAt(i-1).CollegeRequest.Picture " style="height:40% ; width:50% ; margin:2% 2% 2% 20%" /> </a> 
+
+                      <P style="margin-left:20%">@Model.ElementAt(i-1).CollegeRequest.Name</P>
+                        </td>
+                       
+                    if (i % 3 == 0 || i == 3)
+                    {
+                        i++;
+                        break;
+                    }
+
+                }
+          </tr>
+            }
+        }
+        catch (Exception e) { }
+       
+</tbody>
+</table>
+   
